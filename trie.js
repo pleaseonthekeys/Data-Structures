@@ -6,6 +6,11 @@ function Node(letter, complete) {
   this.complete = complete;
 }
 
+Node.prototype.traverse = function(func = console.log) {
+  func(this);
+  Object.values(this.children).forEach(child => child.traverse());
+};
+
 function Trie() {
   this.root = new Node('', false);
 }
@@ -27,11 +32,6 @@ Trie.prototype.addWord = function(word) {
       currentNode = newLetter;
     }
   }
-};
-
-Node.prototype.traverse = function(func = console.log) {
-  func(this);
-  Object.values(this.children).forEach(child => child.traverse());
 };
 
 Trie.prototype.traverse = function(func = console.log) {
