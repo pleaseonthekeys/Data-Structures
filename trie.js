@@ -54,24 +54,6 @@ Trie.prototype.findAllWords = function() {
   return words.length > 0 ? words : null;
 };
 
-Trie.prototype.findSuggestions = function(segment) {
-  //return all suggestions for that input
-  let suggestions = {};
-  //findAllWords returns an array
-  let wordArr = this.findAllWords();
-  wordArr.forEach(word => {
-    let firstChar = word[0];
-    if (suggestions[firstChar]) {
-      suggestions[firstChar].push(word);
-    } else {
-      suggestions[firstChar] = [word];
-    }
-  });
-  console.log(suggestions);
-  //should I import that array, sort it, and derive suggestions from there?
-  //should I write a method from scratch without using findAll?
-};
-
 let searchFunctionality = new Trie();
 searchFunctionality.addWord('apple');
 searchFunctionality.addWord('application');
@@ -91,5 +73,5 @@ function makeNewTrieforJosh(arr) {
 }
 
 let newTrie = makeNewTrieforJosh(letterArr);
-// console.log(newTrie);
-// console.log(newTrie.findAllWords());
+console.log(newTrie);
+console.log(newTrie.findAllWords());
